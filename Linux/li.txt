@@ -2,3 +2,5 @@ linux commands -
 
 1. pwd - it will shows the present working directory
 
+2. cd - It will switch one directory from another directory.
+
