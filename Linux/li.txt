@@ -5,9 +5,13 @@ linux commands -
 2. cd - It will switch one directory from another directory.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 3. history- It will show the history of command that we ran today.
 
 4. Edit the changes for git merge conflict.
 >>>>>>> main
+=======
+3. changes made through master branch. 
+>>>>>>> a647ed908225402b7e7e76261aa1a49412075e50
