@@ -4,3 +4,4 @@ linux commands -
 
 2. cd - It will switch one directory from another directory.
 
+3. changes in line 3 through sample repo.
