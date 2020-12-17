@@ -31,6 +31,7 @@
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'SoftDelete', "/soft-delete/#{product.id}" %></td>
+        <td><%= link_to 'Undelete', "/un-delete/#{product.id}" %></td>
       
       </tr>
     <% end %>
