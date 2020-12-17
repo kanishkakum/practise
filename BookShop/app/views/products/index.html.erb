@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
-
+<%= form_tag products_destroy_path, method: :post do %>
 <table>
   <thead>
     <tr>
@@ -17,7 +17,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= check_box_tag "products[]", product.id %></td>
+       <td> <%= check_box_tag "product_ids[]", product.id, false, :id => "product_#{product.id}" %></td>
         <td><%= product.Title %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
@@ -25,12 +25,14 @@
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'softDelete', "soft-delete/#{product.id}" %></td>
+      
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<%= submit_tag "Delete selected" %>
+<br>
 <%= link_to 'New Product', new_product_path %>
+<% end %>
