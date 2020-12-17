@@ -60,6 +60,15 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def soft_delete
+    debugger
+    @product.update(deleted: true)
+    respond_to do |format|
+      format.html { redirect_to '/', notice: 'Product was successfully soft-deleted.' }
+      format.json { head :no_content }
+    end
+  end 
   
   def destroy_multiple
 
