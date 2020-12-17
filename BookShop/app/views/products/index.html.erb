@@ -21,7 +21,7 @@
       <% else %>
         <tr >
       <% end %>
-      <tr>
+      
        <td> <%= check_box_tag "product_ids[]", product.id, false, :id => "product_#{product.id}" %></td>
         <td><%= product.Title %></td>
         <td><%= product.description %></td>

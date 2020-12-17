@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :soft_delete, :undeleted]
 
   # GET /products
   # GET /products.json
@@ -63,12 +63,13 @@ class ProductsController < ApplicationController
 
   def soft_delete
     @product.update(deleted: true)
+    redirect_to products_path
   end 
-  redirect_to '/'
+
 
   def undeleted
     @product.update(deleted: false)
-    redirect_to '/'
+    redirect_to products_path
   end
   
   def destroy_multiple
