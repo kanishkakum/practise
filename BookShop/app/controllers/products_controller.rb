@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
 
     Product.where(id: params[:product_ids]).destroy_all
    
-      redirect_to products_path
+    redirect_to products_path
     
   end
   private

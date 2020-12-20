@@ -6,3 +6,25 @@
 .deleted{
 	text-decoration: line-through;
 }
+
+image{
+  img {
+    height: 10%;
+  }
+}
+
+
+.btn{
+	font-size: 1.8em;
+	padding: 0 10px 0 10px;
+	position: absolute;
+	right: 35%;
+	top: 5%;
+	background-color: red;
+}
+
+.btn:hover{
+	font-size: 2em;
+	color: white;
+	background-color: #8B0000;
+}
