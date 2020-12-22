@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-	validate :title , :price, presence: true
-	validate :price , numericality: true
-	validate :title , uniqueness: true
+	validates :title , :price, presence: true
+	validates :price , numericality: true
+	validates :title , uniqueness: true
 end
