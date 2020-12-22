@@ -31,7 +31,7 @@
         <td><%= product.Title %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
-        <td class="image"><%= link_to image_tag(product.image_url) %></td>
+        <td class="image"><%= link_to image_tag(product.image_url(:thumb)), image.data.url(:original), :popup=>['original_image', 'height,width=900'] %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
          <!--    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
