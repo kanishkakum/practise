@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
 	
   def index
-  	@products = Product.all
+  	@products = Product.search(params[:search])
   end
 
   def create
   	@product = Product.new(product_params)
 
       if @product.save
+        ProductMailer.product_created.deliver
         redirect_to @product, notice: 'Product was successfully created.' 
     
       else
