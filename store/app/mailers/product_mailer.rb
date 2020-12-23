@@ -1,5 +1,5 @@
 class ProductMailer < ApplicationMailer
-  default from: 'kanishkakumar408@gmail.com'
+  
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -7,7 +7,8 @@ class ProductMailer < ApplicationMailer
   #
   def product_created(product)
     @greeting = "Hi"
+    @product = product
 
-    mail to: "kanishka.kumar@berylsystems.com" , subject: "product created successfully" 
+    mail to: "kanishkakumar408@gmail.com" , subject: "product created successfully" 
   end
 end

@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   	@product = Product.new(product_params)
 
       if @product.save
-        ProductMailer.product_created.deliver
+        ProductMailer.product_created(@product).deliver
         redirect_to @product, notice: 'Product was successfully created.' 
     
       else
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-  	
+  	@product = Product.find(params[:id])
   end
   
   def edit
