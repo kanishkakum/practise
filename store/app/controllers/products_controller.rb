@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-	before_action :set_product, only: [:show, :edit, :update, :destroy, :update]
+	
   def index
   	@products = Product.all
   end
@@ -7,32 +7,29 @@ class ProductsController < ApplicationController
   def create
   	@product = Product.new(product_params)
 
-    respond_to do |format|
       if @product.save
-        format.html { redirect_to products_path, notice: 'Product was successfully created.' }
+        redirect_to @product, notice: 'Product was successfully created.' 
     
       else
-        format.html { render :new }
+        render :new 
         
       end
-    end
   end
+
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
-      else
-        format.html { render :edit }
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to @product, notice: 'Product was successfully updated.' 
+    else
+      render :edit 
  
-      end
     end
   end
 
   def destroy
+    @product = Product.find(params[:id])
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully deleted.' }
-    end
+      redirect_to products_url, notice: 'Product was successfully deleted.' 
   end
 
   def new
@@ -42,13 +39,13 @@ class ProductsController < ApplicationController
   def show
   	
   end
-
+  
+  def edit
+     @product = Product.find(params[:id])
+  end
+    
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
-
+  
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:title, :description, :price, :image_url)

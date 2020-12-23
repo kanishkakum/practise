@@ -5,9 +5,9 @@ class ProductMailer < ApplicationMailer
   #
   #   en.product_mailer.product_created.subject
   #
-  def product_created
+  def product_created(product)
     @greeting = "Hi"
 
-    mail to: "to@example.org"
+    mail to: "kanishka.kumar@berylsystems.com" , subject: "product created successfully" 
   end
 end
