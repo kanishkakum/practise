@@ -1,7 +1,8 @@
 class Product < ApplicationRecord
-  validates :title , :price, presence: true
+  validates :title , :price, :image_url, presence: true
   validates :price , numericality: true
   validates :title , uniqueness: true
+  validates :image_url, allow_blank: true, format: { with: %r{\.(gif|jpg|png)\z}i }
 
   def self.search(search)
 	if search
