@@ -1,10 +1,16 @@
 class Product < ApplicationRecord
   validates :title , :price, presence: true
   validates :price , numericality: true
-  validates :title , uniqueness: true , format: { with:  /\A[a-zA-Z]+\z/ }
+  validates :title , format: { with:  /\A[a-zA-Z]+\z/ }
   validates :image_url, allow_blank: true, format: { with: %r{\.(gif|jpg|png)\z}i }
 
   validate :title_limits
+
+  before_validation :give_default_name
+  def give_default_name
+    self.title = 'default' if title.blank?
+  end
+
 
   private
   def title_limits
@@ -14,8 +20,7 @@ class Product < ApplicationRecord
       errors.add(:title, "cannot be below 5 letters")
     end
   end  
-
-
+  
 
   def self.search(search)
 	if search
