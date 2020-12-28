@@ -1,12 +1,14 @@
 class Product < ApplicationRecord
   validates :title , :price, presence: true
   validates :price , numericality: true
-  validates :title , format: { with:  /\A[a-zA-Z]+\z/ }
   validates :image_url, allow_blank: true, format: { with: %r{\.(gif|jpg|png)\z}i }
 
   validate :title_limits
 
   before_validation :give_default_name
+
+  before_save :titleupcase
+
   def give_default_name
     self.title = 'default' if title.blank?
   end
@@ -28,5 +30,9 @@ class Product < ApplicationRecord
 	else
 	  @products = Product.all
     end
-  end  
+  end 
+
+  def titleupcase
+    self.title = self.title.upcase
+  end   
 end 
