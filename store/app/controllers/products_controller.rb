@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 	
   def index
   	@products = Product.search(params[:search])
+    @products = Product.paginate(page: params[:page], per_page: 5)
   end
 
   def create
@@ -31,6 +32,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
       redirect_to products_url, notice: 'Product was successfully deleted.' 
+  end
+
+  def multiple_destroy
+    Product.where(id: params[:product_ids]).destroy_all
+    redirect_to products_path, notice: "Selected products deleted successfully"
   end
 
   def new

@@ -12,7 +12,7 @@
 <table>
   <thead>
     <tr>
-    
+      <th id= "checkall"><%= check_box_tag 'select_all' %></th> 
       <th>title</th>
       <th>Description</th>
       <th>Price</th>
@@ -26,7 +26,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr >
-       
+        <td><%= check_box_tag "product_ids[]", product.id , checked = false, class: "mycheck" %></td>
         <td><%= product.title %></td>
         <td><%= product.description %></td>
         <td class="price"><%= product.price %></td>
@@ -45,5 +45,14 @@
 
 <br>
 <%= link_to 'New Product', new_product_path %>
+<br>
+<br>
+
+<%= will_paginate @products %>
+
+
+<div>
+    &nbsp &nbsp <%= submit_tag "Multi-Delete", class: 'btn' %>
+</div>    
 
 <% end %>
