@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:email, :username]
 
+  
+  devise :omniauthable, omniauth_providers: [:google_oauth2]       
+
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
  
