@@ -53,5 +53,5 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
          )
       end
     user
-end
+  end
 end
