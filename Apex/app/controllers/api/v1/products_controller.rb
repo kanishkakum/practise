@@ -6,6 +6,11 @@ module Api
         render json: {status: 'SUCCESS', message:'Loaded products', data:products}, status: :ok	
       end
 
+      def show
+      	product = Product.find(params[:id])
+      	render json: {status: 'SUCCESS', message:'Loaded products', data:product}, status: :ok
+      end
+
     end
   end	
 end
