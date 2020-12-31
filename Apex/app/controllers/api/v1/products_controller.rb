@@ -18,8 +18,15 @@ module Api
       	else
       	  render json: {status: 'ERROR', message:'product not saved', data:product.errors}, status: :unprocessable_entity		
         end  
-      	  
       end
+
+      def destroy
+        product = Product.find(params[:id])
+        product.destroy
+        render json: {status: 'ERROR', message:'Deleted product', data:product}, status: :ok  
+
+
+      end  
 
       private
 
