@@ -12,6 +12,12 @@ class User < ApplicationRecord
  
   validates :username, presence:true, uniqueness: true
 
- 
+  attr_accessor :skip_password_validation
+
+
+  def password_required?
+    return false if skip_password_validation
+    super
+  end
 
 end
