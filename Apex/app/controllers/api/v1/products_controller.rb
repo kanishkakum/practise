@@ -11,6 +11,22 @@ module Api
       	render json: {status: 'SUCCESS', message:'Loaded products', data:product}, status: :ok
       end
 
+      def create
+      	product = Product.new(article_params)
+      	if product.save
+      	  render json: {status: 'SUCCESS', message:'product created successfully', data:product}, status: :ok	
+      	else
+      	  render json: {status: 'ERROR', message:'product not saved', data:product.errors}, status: :unprocessable_entity		
+        end  
+      	  
+      end
+
+      private
+
+      def article_params
+        params.permit(:title, :description)
+      end  
+
     end
   end	
 end
