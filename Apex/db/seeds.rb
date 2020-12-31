@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Product.delete_all
+Product.create!(title: 'Ruby',
+  description: "Ruby is a programming language"
+ )
+
+Product.create!(title: 'python',
+  description: "python is a programming language"
+ )
+
+Product.create!(title: 'java',
+  description: "java is a programming language"
+ )
+
+Product.create!(title: 'c++',
+  description: "C++ is a programming language"
+ )
+
+Product.create!(title: 'javascript',
+  description: "javascript is a programming language"
+ )
