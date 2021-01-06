@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-   namespace 'api' do
+  namespace 'api' do
     namespace 'v1' do
       devise_for :users,
       controllers: {
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       devise_scope :user do
         get "/" => "home#index"
       end
+
+      resources :categories
     end
   end  	
 
