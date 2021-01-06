@@ -2,7 +2,7 @@ class Api::V1::CategoriesController < ApplicationController
 
   def index
     category = Category.all
-    render json: {status: 'SUCCESS', messgae: 'Loaded Category', data:categories}
+    render json: {status: 'SUCCESS', messgae: 'Loaded Category', data:category}
   end	
 
   def show

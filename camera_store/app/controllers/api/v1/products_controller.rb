@@ -2,7 +2,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def index
     product = Product.all
-    render json: {status: 'SUCCESS', message: 'Product loaded Successful', data:products}
+    render json: {status: 'SUCCESS', message: 'Product loaded Successful', data:product}
   end
   
   def show
@@ -37,7 +37,7 @@ class Api::V1::ProductsController < ApplicationController
   private
 
   def product_params  
-    params.permit(:name, :category_id, :description, :price, :make)
+    params.permit(:name, :category_id, :description, :price, :make, :user_id)
   end  
 
 
