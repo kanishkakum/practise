@@ -14,6 +14,11 @@ Rails.application.routes.draw do
       resources :categories
 
       resources :products
+
+      get 'users/:id/products' => 'products#index', :as => :user_products_path
+
+      get 'categories/:id/products' => 'categories#index', :as => :category_products_path
+
     end
   end  	
 
