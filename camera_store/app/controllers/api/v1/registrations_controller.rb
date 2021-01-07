@@ -9,6 +9,7 @@ class  Api::V1::RegistrationsController < Devise::RegistrationsController
 
     puts token
     puts user.id
+    cart = Cart.create[:user_id]
       render json: token.to_json
     else
       render json: { errors: { 'email or password' => ['is invalid'] } }, status: :unprocessable_entity
