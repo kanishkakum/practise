@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
       get 'categories/:id/products' => 'categories#index', :as => :category_products_path
 
+      get 'users/:id/categories' => 'categories#show', :as => :category_path
+
       #get 'users/:id/carts' => 'carts#index', :as => :user_carts_path
       post '/add_to_cart/:product_id' => 'carts#add_to_cart', :as => 'add_to_cart'
     end
