@@ -17,12 +17,17 @@ Rails.application.routes.draw do
 
       get 'users/:id/products' => 'products#index', :as => :user_products_path
 
-      get 'categories/:id/products' => 'categories#index', :as => :category_products_path
+      get 'categories/:id/' => 'categories#index', :as => :category_path
 
-      get 'users/:id/categories' => 'categories#show', :as => :category_path
+      get 'users/products/:id/category' => 'products#show_products', :as => :category_products_path
+
+
+
+
+
 
       #get 'users/:id/carts' => 'carts#index', :as => :user_carts_path
-      post '/add_to_cart/:product_id' => 'carts#add_to_cart', :as => 'add_to_cart'
+      post 'add_items' => 'carts#add_items', :as => 'add_to_cart'
     end
   end  	
 
