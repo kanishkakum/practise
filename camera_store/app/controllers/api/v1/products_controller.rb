@@ -7,8 +7,14 @@ class Api::V1::ProductsController < ApplicationController
   
   def show
     product = Product.find(params[:id])
-    render json: {status: 'SUCCESS', message: 'Product loaded Successful', data:product}\
+    render json: {status: 'SUCCESS', message: 'Product loaded Successful', data:product}
   end
+
+  def show_products
+    products = Product.where(category_id: params[:id])
+    render json: {status: 'SUCCESS', message: 'Product loaded Successful', data:products}
+  end  
+
 
   def create
     product = Product.new(product_params)
