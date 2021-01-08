@@ -1,22 +1,26 @@
 class Api::V1::CartsController < ApplicationController
-  #before_action :authenticate_user  
+  before_action :permit_all_params
   
-  def add_items
-  products.each do |product_id|
-    @user.cart.products << Product.find(id: product_id)
-  end
+  # def add_items
+  #   products.each do |product_id|
+  #     @user.cart.products << params[:products].find(id: product_id)
+  #   end  
+  # end
 
-  def current_cart
-    if session[:cart_id]
-      @current_cart ||= Cart.find(session[:cart_id])
-    end
-    if session[:cart_id].nil?
-      @current_cart = Cart.create!
-      session[:cart_id] = @current_cart.id
-    end
-    @current_cart
-  end
+  def add_products
+    @user = User.find_by(id: params[:id])
+    products = params['products'].split(',')
+    products.each do |product_id|
+      @user.cart.products << Product.find_by(id: product_id)
+    end 
+  end   
 
+  def show
+    @cart = Cart.find_by(user_id: params[:id])
+    render json: {data: @cart}
+  end    
 
-
+  def permit_all_params
+    params.permit!
+  end  
 end
