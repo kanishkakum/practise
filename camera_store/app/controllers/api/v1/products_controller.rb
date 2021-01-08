@@ -1,8 +1,8 @@
 class Api::V1::ProductsController < ApplicationController
-
+  before_action :permit_all_params
   def index
     product = Product.all
-    render json: {status: 'SUCCESS', message: 'Product loaded Successful', data:product}
+    render json: {status: 'SUCCESS', message: 'Product loaded Successful', data:products}
   end
   
   def show
@@ -18,6 +18,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
+    # debugger
     if product.save
       render json: {status: 'SUCCESS', message: 'Product Saved Successful', data:product}  
     else
@@ -43,8 +44,13 @@ class Api::V1::ProductsController < ApplicationController
   private
 
   def product_params  
-    params.permit(:name, :category_id, :description, :price, :make, :user_id)
+    params.permit(:name, :category_id, :description, :price, :make)
   end  
+
+  def permit_all_params
+    params.permit!
+
+  end
 
 
 end	
