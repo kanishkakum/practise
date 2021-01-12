@@ -11,7 +11,15 @@ class Product < ApplicationRecord
 
   before_save :inc_price
 
+  before_create :add_description
+  
   def inc_price
   	self.price = price*1.20
   end	
+
+  def add_description
+  	self.description = "Digital Camera"
+  end	
+
+
 end
