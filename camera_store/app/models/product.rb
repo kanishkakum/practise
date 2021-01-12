@@ -12,6 +12,8 @@ class Product < ApplicationRecord
   before_save :inc_price
 
   before_create :add_description
+
+  before_update :downcase
   
   def inc_price
   	self.price = price*1.20
@@ -20,6 +22,10 @@ class Product < ApplicationRecord
   def add_description
   	self.description = "Digital Camera"
   end	
+
+  def downcase
+    self.name = self.name.downcase
+  end  
 
 
 end
