@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_084822) do
+ActiveRecord::Schema.define(version: 2021_01_13_092652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_084822) do
     t.integer "contact_no"
     t.integer "adhar_no"
     t.integer "salary", default: 0
+    t.text "email"
   end
 
   add_foreign_key "products", "users"
