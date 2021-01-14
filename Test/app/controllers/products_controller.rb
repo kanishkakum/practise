@@ -28,7 +28,33 @@ class ProductsController < ApplicationController
   	    format.json {render json: @product.errors, status: :unprocessability_entity}
   	  end
   	end
-  end 	      	
+  end 	  
 
+  def edit
+    @product = Product.find(params[:id])
+  end    	
+  
+  def update
+  	respond_to do |format|
+
+      if @product.update(product_params)
+   
+        format.html{redirect_to @product, notice: "product was successfully updated"}
+        format.json {render :show}
+      else 
+        format.html{render :edit}
+        format.json {render json: @product.errors, status: :unprocessability_entity}
+      end
+    end
+  end     
+
+
+
+
+  private
+
+  def product_params
+  	params.permit(:name, :description, :price, :make)
+  end
 
 end	
