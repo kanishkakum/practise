@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :products , only: [:index, :show, :create]
+  #resources :products , only: [:index, :show, :create]
+  resources :products
   root to: 'products#index'
 
   post 'products/xyz', to: 'products#xyz', as: 'xyz'	
