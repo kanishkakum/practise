@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_070509) do
+ActiveRecord::Schema.define(version: 2021_01_16_074512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_histories", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.integer "credit_rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_account_histories_on_account_id"
+  end
+
+  create_table "accounthistories", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.integer "credit_rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_accounthistories_on_account_id"
+  end
+
+  create_table "accounts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "account_no"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -69,6 +93,9 @@ ActiveRecord::Schema.define(version: 2021_01_16_070509) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "account_histories", "accounts"
+  add_foreign_key "accounthistories", "accounts"
+  add_foreign_key "accounts", "users"
   add_foreign_key "addresses", "users"
   add_foreign_key "carts", "users"
   add_foreign_key "carts_products", "carts"
