@@ -1,4 +1,4 @@
-class BaseController < ActionController::Base
+class BaseController < ActionController::API
   respond_to :html, :json
   before_action :process_token
    skip_before_action :verify_authenticity_token

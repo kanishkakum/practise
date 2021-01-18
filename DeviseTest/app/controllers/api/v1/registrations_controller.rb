@@ -1,6 +1,6 @@
-class RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < Devise::RegistrationsController
   before_action :permit_all_params
-   skip_before_action :verify_authenticity_token
+   #skip_before_action :verify_authenticity_token
 
 
   def create
