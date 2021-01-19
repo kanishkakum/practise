@@ -1,5 +1,6 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
   before_action :permit_all_params
+  skip_before_action :verify_authenticity_token
 
   def create
   	user = User.create(sign_up_params)
@@ -7,7 +8,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   	  token = JWT.encode({user_id: User.find_by(email: sign_up_params[:email]).id}, 's3cr3t')
   	  puts token
   	  puts user.id
-  	  render json: json.to_token 
+  	  render json: token.to_json 
     else
       render json: {errors: {'email orr password' => ['is invalid']}}, status: :unprocessable_entity
     end
@@ -18,7 +19,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
   
   def permit_all_params
-  	permit.params
+  	params.permit!
   end	
 
 end	

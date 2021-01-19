@@ -1,7 +1,7 @@
 class BaseController < ActionController::API
   respond_to :json
   before_action :process_token
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
 
   private
 
