@@ -58,3 +58,5 @@ gem 'awesome_print'
 gem 'devise-jwt', '~> 0.8.0'
 
 gem 'devise'
+
+gem 'active_model_serializers', '~> 0.10.0'
