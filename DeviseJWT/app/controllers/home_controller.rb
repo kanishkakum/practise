@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
+  #before_action :process_token
   def index
-    render json: @current_user
-
-  end	
-
-
-end	
+  	@user = current_user
+  end
+  	# debugger
+  	# render json: {message: 'Current User', data: User.find(@current_user_id) }, status: :ok
+  
+end
