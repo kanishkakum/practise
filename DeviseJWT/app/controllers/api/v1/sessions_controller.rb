@@ -1,10 +1,14 @@
 class Api::V1::SessionsController < Devise::SessionsController
+  before_action :sign_in_params
+ 
+  skip_before_action :verify_authenticity_token
+
 
   def create
-    user = User.find_by(sign_in_params[:email])
+    user = User.find_by_email(sign_in_params[:email])
     if user && user.valid_password?(sign_in_params[:password])
-      token = JWT.encode({user_id: user_id}, 's3cr3t')
-      render json: token.to_json
+      token = JWT.encode({user_id: user.id}, 's3cr3t')
+      render json:{status: 200, message: 'Success', user: UserSerializer.new(user), token: token.to_json}, status: :ok
     else
       render json: {errors: {'email orr password' => ['is invalid']}}, status: :unprocessable_entity
     end
