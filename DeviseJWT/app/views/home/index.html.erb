@@ -1,7 +1,53 @@
 <h1>Home Page</h1>
 <br>
 <% if user_signed_in? %>	
-  <h2> <strong><%= @user.email %></strong> </h2>
+  <h2> HI <strong><%=  @user.name %></strong> </h2>
+<% if @user.cart != nil %>
+  <h3> Your Products</h3>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>make</th>
+      <th>price</th>
+    </thead>
+    
+    <tbody>
+
+      <% @user.cart.products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.make %></td>
+        <td><%= product.price %></td>
+      </tr>
+      <% end %>
+    </tbody>  
+  </table>  
+  <% end %>
+  <br><br><br>
+
+  <h4> Your details
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>gender</th>
+      <th>contact</th>
+      <th>email</th>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td><%= @user.name %></td>
+        <td><%= @user.gender %></td>
+        <td><%= @user.contact %></td>
+        <td><%= @user.email %></td>
+      </tr>
+    </tbody>  
+  </table>  
+
+
+
+
+
   
 <br><br>
 <%= link_to 'Edit', edit_user_registration_path %><br><br>

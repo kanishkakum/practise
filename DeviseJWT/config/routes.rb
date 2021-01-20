@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
    root 'home#index'
 
+   get 'users/show' , to: 'home#show', as: 'user_show'
+
 
 end
