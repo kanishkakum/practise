@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   before_create :Namecapitalize
   before_create :CategoryName
+  before_create :AddPrefix
 
   private 
   def Namecapitalize
@@ -21,5 +22,13 @@ class User < ApplicationRecord
 
   def CategoryName
     self.contact = "+91" + self.contact if contact?
+  end	
+
+  def AddPrefix
+    if self.gender=="male"
+      self.name = "Mr. "+self.name.capitalize
+    else
+      self.name = "Mrs. "+self.name.capitalize
+    end    
   end	
 end
