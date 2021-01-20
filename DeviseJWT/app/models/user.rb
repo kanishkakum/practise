@@ -12,9 +12,14 @@ class User < ApplicationRecord
   has_many :accounthistories, :through => :account
 
   before_create :Namecapitalize
+  before_create :CategoryName
 
   private 
   def Namecapitalize
     self.name = self.name.capitalize
+  end	
+
+  def CategoryName
+    self.contact = "+91" + self.contact if contact?
   end	
 end
