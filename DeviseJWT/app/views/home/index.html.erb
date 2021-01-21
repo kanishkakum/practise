@@ -29,12 +29,14 @@
     <thead>
       <th>Name</th>
       <th>account_no</th>
+      <th>credit</th>
     </thead>
     
     <tbody>
       <tr>
         <td><%= @user.name %></td>
-        <td><%= @user.account.account_no %></td
+        <td><%= @user.account.account_no %></td>
+        <td><%= @user.account.accounthistory%></td>
       </tr>
     </tbody>
   </table>        
@@ -54,6 +56,25 @@
         <td><%= @user.gender %></td>
         <td><%= @user.contact %></td>
         <td><%= @user.email %></td>
+      </tr>
+    </tbody>  
+  </table>  
+
+   <h4><%= @user.name %> Address </h4>
+  <table>
+    <thead>
+      <th>street</th>
+      <th>city</th>
+      <th>state</th>
+      <th>zip</th>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td><%= @user.addresses.first.street %></td>
+        <td><%= @user.addresses.first.city %></td>
+        <td><%= @user.addresses.first.state %></td>
+        <td><%= @user.addresses.first.zip %></td>
       </tr>
     </tbody>  
   </table>  
