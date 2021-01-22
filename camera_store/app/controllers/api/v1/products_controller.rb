@@ -34,12 +34,13 @@ class Api::V1::ProductsController < ApplicationController
   
   def update
     product = Product.find(params[:id]) 
-    if product.update_attributed(product_params)
+    if product.update_attributes(product_params)
       render json: {status: 'SUCCESS', message: 'Product update Successful', data:product}
     else
       render json: {status: 'ERROR', message: 'Product update Unsuccessful', data:product}
     end
   end
+:id
 
   private
 

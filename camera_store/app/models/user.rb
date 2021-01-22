@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :products
   has_one :cart       
+  scope :z, -> () {find(4).cart.products.where(category_id: Category.where(name: 'nikon'))}
+
+
+
 end

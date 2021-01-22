@@ -1,12 +1,12 @@
-class RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < Devise::RegistrationsController
   before_action :permit_all_params
-  skip_before_action :verify_authenticity_token	
+  #skip_before_action :verify_authenticity_token	
 
 
   def create
   	user = User.create(sign_up_params)
   	if user.save
-  	  token = JWT.encode({user_id: User.find_by(email: sign_up_params['email'].id)}, 's3cr3t')
+  	  token = JWT.encode({user_id: User.find_by(email: sign_up_params['email']).id}, 's3cr3t')
   	  puts token
   	  puts user.id
   	  render json: token.to_json

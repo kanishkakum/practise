@@ -58,3 +58,4 @@ gem 'awesome_print'
 gem 'devise-jwt', '~> 0.8.0'
 
 gem 'devise'
+

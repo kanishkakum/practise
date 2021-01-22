@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
- # devise_for :users
-  devise_for :users,
+  namespace 'api' do
+    namespace 'v1' do
+      devise_for :users,
       controllers: {
-        registrations: 'registrations',
-         sessions: 'sessions'
-      }	
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+        registrations: 'api/v1/registrations',
+         sessions: 'api/v1/sessions'
+      }
+	end
+  end	
+
+
+   
+
 end

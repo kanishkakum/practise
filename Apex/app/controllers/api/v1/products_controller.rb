@@ -26,7 +26,7 @@ module Api
         render json: {status: 'ERROR', message:'Deleted product', data:product}, status: :ok  
       end 
 
-      def create
+      def update
         product = Product.find(params[:id])
         if product.update_attributes(product_params)
           render json: {status: 'SUCCESS', message:'product updated successfully', data:product}, status: :ok 

@@ -1,7 +1,8 @@
-class BaseController < ActionController::BaseController
+class BaseController < ActionController::API
   respond_to :json
   before_action :process_token
   skip_before_action :verify_authenticity_token
+  
 
   private
 
@@ -12,7 +13,7 @@ class BaseController < ActionController::BaseController
   	  	@current_user_id = jwt.payload[0]['user_id'].to_i
   	  	  puts jwt_payload
   	  rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
-  	    head :unauthorized
+  	    render json: {status: 404 , message: "unauthorized user"}
   	  end
   	end
   end

@@ -7,12 +7,13 @@ class Api::V1::CartsController < ApplicationController
   #   end  
   # end
 
-  def add_products
-    @user = User.find_by(id: params[:id])
+  def add_product
+    @user = User.find_by(id: params['user'])
     products = params['products'].split(',')
     products.each do |product_id|
       @user.cart.products << Product.find_by(id: product_id)
     end 
+    render json: {data: @user.cart.products }
   end   
 
   def show

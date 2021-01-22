@@ -21,14 +21,11 @@ Rails.application.routes.draw do
 
       get 'users/products/:id/category' => 'products#show_products', :as => :category_products_path
 
-      cart 'user/cart/products' => 'carts#add_product', :as => :carts_product_path
+      post 'user/carts' => 'carts#add_product'
 
-
-
-
-
-      #get 'users/:id/carts' => 'carts#index', :as => :user_carts_path
       post 'add_items' => 'carts#add_items', :as => 'add_to_cart'
+
+      get 'user/carts/show_products' => 'home#show_products'
     end
   end  	
 
